@@ -1,0 +1,92 @@
+0$compare  %3 = alloca i8*, align 8
+1$compare  %4 = alloca i8*, align 8
+2$compare  %5 = alloca i32, align 4
+3$compare  store i8* %0, i8** %3, align 8
+4$compare  store i8* %1, i8** %4, align 8
+5$compare  %6 = load i8*, i8** %3, align 8
+6$compare  %7 = bitcast i8* %6 to %struct.myStringStruct*
+7$compare  %8 = getelementptr inbounds %struct.myStringStruct, %struct.myStringStruct* %7, i32 0, i32 0
+8$compare  %9 = getelementptr inbounds [128 x i8], [128 x i8]* %8, i32 0, i32 0
+9$compare  %10 = load i8*, i8** %4, align 8
+10$compare  %11 = bitcast i8* %10 to %struct.myStringStruct*
+11$compare  %12 = getelementptr inbounds %struct.myStringStruct, %struct.myStringStruct* %11, i32 0, i32 0
+12$compare  %13 = getelementptr inbounds [128 x i8], [128 x i8]* %12, i32 0, i32 0
+13$compare  %14 = call i32 @strcmp(i8* %9, i8* %13) #4
+14$compare  store i32 %14, i32* %5, align 4
+15$compare  %15 = load i32, i32* %5, align 4
+16$compare  %16 = icmp slt i32 %15, 0
+17$compare0  br i1 %16, label %17, label %18
+18$compare1  br label %22
+19$compare  %19 = load i32, i32* %5, align 4
+20$compare  %20 = icmp eq i32 %19, 0
+21$compare  %21 = select i1 %20, i32 0, i32 -1
+22$compare2  br label %22
+23$compare  %23 = phi i32 [ 1, %17 ], [ %21, %18 ]
+24$compare  ret i32 %23
+25$main  %3 = alloca i32, align 4
+26$main  %4 = alloca i32, align 4
+27$main  %5 = alloca i8**, align 8
+28$main  %6 = alloca [60000 x %struct.myStringStruct], align 16
+29$main  %7 = alloca %struct._IO_FILE*, align 8
+30$main  %8 = alloca i32, align 4
+31$main  %9 = alloca i32, align 4
+32$main  store i32 0, i32* %3, align 4
+33$main  store i32 %0, i32* %4, align 4
+34$main  store i8** %1, i8*** %5, align 8
+35$main  store i32 0, i32* %9, align 4
+36$main  %10 = load i32, i32* %4, align 4
+37$main  %11 = icmp slt i32 %10, 2
+38$main4  br i1 %11, label %12, label %15
+39$main  %13 = load %struct._IO_FILE*, %struct._IO_FILE** @stderr, align 8
+40$main  %14 = call i32 (%struct._IO_FILE*, i8*, ...) @fprintf(%struct._IO_FILE* %13, i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i32 0, i32 0))
+41$main  call void @exit(i32 -1) #4
+42$main  unreachable
+43$main  %16 = load i8**, i8*** %5, align 8
+44$main  %17 = getelementptr inbounds i8*, i8** %16, i64 1
+45$main  %18 = load i8*, i8** %17, align 8
+46$main  %19 = call %struct._IO_FILE* @fopen(i8* %18, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.1, i32 0, i32 0))
+47$main  store %struct._IO_FILE* %19, %struct._IO_FILE** %7, align 8
+48$main6  br label %20
+49$main  %21 = load %struct._IO_FILE*, %struct._IO_FILE** %7, align 8
+50$main  %22 = load i32, i32* %9, align 4
+51$main  %23 = sext i32 %22 to i64
+52$main  %24 = getelementptr inbounds [60000 x %struct.myStringStruct], [60000 x %struct.myStringStruct]* %6, i64 0, i64 %23
+53$main  %25 = getelementptr inbounds %struct.myStringStruct, %struct.myStringStruct* %24, i32 0, i32 0
+54$main  %26 = call i32 (%struct._IO_FILE*, i8*, ...) @__isoc99_fscanf(%struct._IO_FILE* %21, i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.2, i32 0, i32 0), [128 x i8]* %25)
+55$main  %27 = icmp eq i32 %26, 1
+56$main7  br i1 %27, label %28, label %31
+57$main  %29 = load i32, i32* %9, align 4
+58$main  %30 = icmp slt i32 %29, 60000
+59$main8  br label %31
+60$main  %32 = phi i1 [ false, %20 ], [ %30, %28 ]
+61$main9  br i1 %32, label %33, label %36
+62$main  %34 = load i32, i32* %9, align 4
+63$main  %35 = add nsw i32 %34, 1
+64$main  store i32 %35, i32* %9, align 4
+65$main10  br label %20
+66$main11  br label %37
+67$main  %38 = load i32, i32* %9, align 4
+68$main  %39 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str.3, i32 0, i32 0), i32 %38)
+69$main  %40 = getelementptr inbounds [60000 x %struct.myStringStruct], [60000 x %struct.myStringStruct]* %6, i32 0, i32 0
+70$main  %41 = bitcast %struct.myStringStruct* %40 to i8*
+71$main  %42 = load i32, i32* %9, align 4
+72$main  %43 = sext i32 %42 to i64
+73$main  call void @qsort(i8* %41, i64 %43, i64 128, i32 (i8*, i8*)* @compare)
+74$main  store i32 0, i32* %8, align 4
+75$main12  br label %44
+76$main  %45 = load i32, i32* %8, align 4
+77$main  %46 = load i32, i32* %9, align 4
+78$main  %47 = icmp slt i32 %45, %46
+79$main13  br i1 %47, label %48, label %58
+80$main  %49 = load i32, i32* %8, align 4
+81$main  %50 = sext i32 %49 to i64
+82$main  %51 = getelementptr inbounds [60000 x %struct.myStringStruct], [60000 x %struct.myStringStruct]* %6, i64 0, i64 %50
+83$main  %52 = getelementptr inbounds %struct.myStringStruct, %struct.myStringStruct* %51, i32 0, i32 0
+84$main  %53 = getelementptr inbounds [128 x i8], [128 x i8]* %52, i32 0, i32 0
+85$main  %54 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.4, i32 0, i32 0), i8* %53)
+86$main14  br label %55
+87$main  %56 = load i32, i32* %8, align 4
+88$main  %57 = add nsw i32 %56, 1
+89$main  store i32 %57, i32* %8, align 4
+90$main16  br label %44
+91$main  ret i32 0

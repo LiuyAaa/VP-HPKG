@@ -1,0 +1,37 @@
+BB0 13
+pred: 
+succ: 1 
+BB1 3
+pred: 6 0 
+succ: 2 3 
+BB2 21
+pred: 1 
+succ: 4 5 
+BB4 8
+pred: 2 
+succ: 5 
+BB5 1
+pred: 4 2 
+succ: 6 
+BB6 4
+pred: 5 
+succ: 1 
+BB3 5
+pred: 1 
+succ: 
+BB7 8
+pred: 
+succ: 8 
+BB8 3
+pred: 11 7 
+succ: 9 10 
+BB9 10
+pred: 8 
+succ: 11 
+BB11 4
+pred: 9 
+succ: 8 
+BB10 9
+pred: 8 
+succ: 
+funcall 9->0 3->9 10->0 3->10 

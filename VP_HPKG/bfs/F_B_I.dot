@@ -1,0 +1,171 @@
+0$init_queue  %2 = alloca %struct.queue_t*, align 8
+1$init_queue  store %struct.queue_t* %0, %struct.queue_t** %2, align 8
+2$init_queue  %3 = load %struct.queue_t*, %struct.queue_t** %2, align 8
+3$init_queue  %4 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %3, i32 0, i32 0
+4$init_queue  store i32 0, i32* %4, align 4
+5$init_queue  %5 = load %struct.queue_t*, %struct.queue_t** %2, align 8
+6$init_queue  %6 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %5, i32 0, i32 1
+7$init_queue  store i32 254, i32* %6, align 4
+8$init_queue  %7 = load %struct.queue_t*, %struct.queue_t** %2, align 8
+9$init_queue  %8 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %7, i32 0, i32 3
+10$init_queue  store i32 0, i32* %8, align 4
+11$init_queue  ret void
+12$push  %3 = alloca %struct.queue_t*, align 8
+13$push  %4 = alloca i32, align 4
+14$push  store %struct.queue_t* %0, %struct.queue_t** %3, align 8
+15$push  store i32 %1, i32* %4, align 4
+16$push  %5 = load %struct.queue_t*, %struct.queue_t** %3, align 8
+17$push  %6 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %5, i32 0, i32 3
+18$push  %7 = load i32, i32* %6, align 4
+19$push  %8 = icmp sge i32 %7, 255
+20$push1  br i1 %8, label %9, label %12
+21$push  %10 = load i32, i32* %4, align 4
+22$push  %11 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([37 x i8], [37 x i8]* @.str, i32 0, i32 0), i32 %10)
+23$push2  br label %34
+24$push  %13 = load %struct.queue_t*, %struct.queue_t** %3, align 8
+25$push  %14 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %13, i32 0, i32 1
+26$push  %15 = load i32, i32* %14, align 4
+27$push  %16 = add nsw i32 %15, 1
+28$push  %17 = srem i32 %16, 255
+29$push  %18 = load %struct.queue_t*, %struct.queue_t** %3, align 8
+30$push  %19 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %18, i32 0, i32 1
+31$push  store i32 %17, i32* %19, align 4
+32$push  %20 = load i32, i32* %4, align 4
+33$push  %21 = load %struct.queue_t*, %struct.queue_t** %3, align 8
+34$push  %22 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %21, i32 0, i32 2
+35$push  %23 = load %struct.queue_t*, %struct.queue_t** %3, align 8
+36$push  %24 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %23, i32 0, i32 1
+37$push  %25 = load i32, i32* %24, align 4
+38$push  %26 = sext i32 %25 to i64
+39$push  %27 = getelementptr inbounds [256 x i32], [256 x i32]* %22, i64 0, i64 %26
+40$push  store i32 %20, i32* %27, align 4
+41$push  %28 = load %struct.queue_t*, %struct.queue_t** %3, align 8
+42$push  %29 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %28, i32 0, i32 3
+43$push  %30 = load i32, i32* %29, align 4
+44$push  %31 = add nsw i32 %30, 1
+45$push  %32 = load %struct.queue_t*, %struct.queue_t** %3, align 8
+46$push  %33 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %32, i32 0, i32 3
+47$push  store i32 %31, i32* %33, align 4
+48$push3  br label %34
+49$push  ret void
+50$front  %2 = alloca %struct.queue_t*, align 8
+51$front  %3 = alloca i32, align 4
+52$front  store %struct.queue_t* %0, %struct.queue_t** %2, align 8
+53$front  %4 = load %struct.queue_t*, %struct.queue_t** %2, align 8
+54$front  %5 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %4, i32 0, i32 3
+55$front  %6 = load i32, i32* %5, align 4
+56$front  %7 = icmp sle i32 %6, 0
+57$front5  br i1 %7, label %8, label %10
+58$front  %9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([26 x i8], [26 x i8]* @.str.1, i32 0, i32 0))
+59$front6  br label %19
+60$front  %11 = load %struct.queue_t*, %struct.queue_t** %2, align 8
+61$front  %12 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %11, i32 0, i32 2
+62$front  %13 = load %struct.queue_t*, %struct.queue_t** %2, align 8
+63$front  %14 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %13, i32 0, i32 0
+64$front  %15 = load i32, i32* %14, align 4
+65$front  %16 = sext i32 %15 to i64
+66$front  %17 = getelementptr inbounds [256 x i32], [256 x i32]* %12, i64 0, i64 %16
+67$front  %18 = load i32, i32* %17, align 4
+68$front  store i32 %18, i32* %3, align 4
+69$front7  br label %19
+70$front  %20 = load i32, i32* %3, align 4
+71$front  ret i32 %20
+72$back  %2 = alloca %struct.queue_t*, align 8
+73$back  %3 = alloca i32, align 4
+74$back  store %struct.queue_t* %0, %struct.queue_t** %2, align 8
+75$back  %4 = load %struct.queue_t*, %struct.queue_t** %2, align 8
+76$back  %5 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %4, i32 0, i32 3
+77$back  %6 = load i32, i32* %5, align 4
+78$back  %7 = icmp sge i32 %6, 255
+79$back9  br i1 %7, label %8, label %10
+80$back  %9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([30 x i8], [30 x i8]* @.str.2, i32 0, i32 0))
+81$back10  br label %19
+82$back  %11 = load %struct.queue_t*, %struct.queue_t** %2, align 8
+83$back  %12 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %11, i32 0, i32 2
+84$back  %13 = load %struct.queue_t*, %struct.queue_t** %2, align 8
+85$back  %14 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %13, i32 0, i32 1
+86$back  %15 = load i32, i32* %14, align 4
+87$back  %16 = sext i32 %15 to i64
+88$back  %17 = getelementptr inbounds [256 x i32], [256 x i32]* %12, i64 0, i64 %16
+89$back  %18 = load i32, i32* %17, align 4
+90$back  store i32 %18, i32* %3, align 4
+91$back11  br label %19
+92$back  %20 = load i32, i32* %3, align 4
+93$back  ret i32 %20
+94$pop  %2 = alloca %struct.queue_t*, align 8
+95$pop  store %struct.queue_t* %0, %struct.queue_t** %2, align 8
+96$pop  %3 = load %struct.queue_t*, %struct.queue_t** %2, align 8
+97$pop  %4 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %3, i32 0, i32 0
+98$pop  %5 = load i32, i32* %4, align 4
+99$pop  %6 = add nsw i32 %5, 1
+100$pop  %7 = srem i32 %6, 255
+101$pop  %8 = load %struct.queue_t*, %struct.queue_t** %2, align 8
+102$pop  %9 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %8, i32 0, i32 0
+103$pop  store i32 %7, i32* %9, align 4
+104$pop  %10 = load %struct.queue_t*, %struct.queue_t** %2, align 8
+105$pop  %11 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %10, i32 0, i32 3
+106$pop  %12 = load i32, i32* %11, align 4
+107$pop  %13 = sub nsw i32 %12, 1
+108$pop  %14 = load %struct.queue_t*, %struct.queue_t** %2, align 8
+109$pop  %15 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %14, i32 0, i32 3
+110$pop  store i32 %13, i32* %15, align 4
+111$pop  ret void
+112$is_empty  %2 = alloca i32, align 4
+113$is_empty  %3 = alloca %struct.queue_t*, align 8
+114$is_empty  store %struct.queue_t* %0, %struct.queue_t** %3, align 8
+115$is_empty  %4 = load %struct.queue_t*, %struct.queue_t** %3, align 8
+116$is_empty  %5 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %4, i32 0, i32 3
+117$is_empty  %6 = load i32, i32* %5, align 4
+118$is_empty  %7 = icmp sle i32 %6, 0
+119$is_empty14  br i1 %7, label %8, label %9
+120$is_empty  store i32 1, i32* %2, align 4
+121$is_empty15  br label %10
+122$is_empty  store i32 0, i32* %2, align 4
+123$is_empty16  br label %10
+124$is_empty  %11 = load i32, i32* %2, align 4
+125$is_empty  ret i32 %11
+126$main  %1 = alloca i32, align 4
+127$main  %2 = alloca i32, align 4
+128$main  %3 = alloca i32, align 4
+129$main  %4 = alloca %struct.queue_t, align 4
+130$main  store i32 0, i32* %1, align 4
+131$main  call void @init_queue(%struct.queue_t* %4)
+132$main  call void @push(%struct.queue_t* %4, i32 0)
+133$main18  br label %5
+134$main  %6 = call i32 @is_empty(%struct.queue_t* %4)
+135$main  %7 = icmp eq i32 %6, 0
+136$main19  br i1 %7, label %8, label %36
+137$main  %9 = call i32 @front(%struct.queue_t* %4)
+138$main  store i32 %9, i32* %3, align 4
+139$main  %10 = load i32, i32* %3, align 4
+140$main  %11 = add nsw i32 %10, 1
+141$main  %12 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %4, i32 0, i32 0
+142$main  %13 = load i32, i32* %12, align 4
+143$main  %14 = getelementptr inbounds %struct.queue_t, %struct.queue_t* %4, i32 0, i32 1
+144$main  %15 = load i32, i32* %14, align 4
+145$main  %16 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.3, i32 0, i32 0), i32 %11, i32 %13, i32 %15)
+146$main  call void @pop(%struct.queue_t* %4)
+147$main  store i32 5, i32* %2, align 4
+148$main20  br label %17
+149$main  %18 = load i32, i32* %2, align 4
+150$main  %19 = icmp sge i32 %18, 0
+151$main22  br i1 %19, label %20, label %35
+152$main  %21 = load i32, i32* %3, align 4
+153$main  %22 = sext i32 %21 to i64
+154$main  %23 = getelementptr inbounds [6 x [6 x i32]], [6 x [6 x i32]]* @grph, i64 0, i64 %22
+155$main  %24 = load i32, i32* %2, align 4
+156$main  %25 = sext i32 %24 to i64
+157$main  %26 = getelementptr inbounds [6 x i32], [6 x i32]* %23, i64 0, i64 %25
+158$main  %27 = load i32, i32* %26, align 4
+159$main  %28 = icmp eq i32 %27, 1
+160$main23  br i1 %28, label %29, label %31
+161$main  %30 = load i32, i32* %2, align 4
+162$main  call void @push(%struct.queue_t* %4, i32 %30)
+163$main25  br label %31
+164$main26  br label %32
+165$main  %33 = load i32, i32* %2, align 4
+166$main  %34 = add nsw i32 %33, -1
+167$main  store i32 %34, i32* %2, align 4
+168$main27  br label %17
+169$main24  br label %5
+170$main  ret i32 0

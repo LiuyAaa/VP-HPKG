@@ -1,0 +1,261 @@
+subgraph cluster_usqrt{
+label = usqrt;
+subgraph cluster_BB0{
+label = BB0;
+dataflow
+"usqrt  %3 = alloca i64, align 8" -> "usqrt  store i64 %0, i64* %3, align 8";
+"usqrt  %4 = alloca %struct.int_sqrt*, align 8" -> "usqrt  store %struct.int_sqrt* %1, %struct.int_sqrt** %4, align 8";
+"usqrt  %5 = alloca i64, align 8" -> "usqrt  store i64 0, i64* %5, align 8";
+"usqrt  %6 = alloca i64, align 8" -> "usqrt  store i64 0, i64* %6, align 8";
+"usqrt  %7 = alloca i64, align 8" -> "usqrt  store i64 0, i64* %7, align 8";
+"usqrt  %8 = alloca i32, align 4" -> "usqrt  store i32 0, i32* %8, align 4";
+controlflow
+"usqrt  %3 = alloca i64, align 8" -> "usqrt  %4 = alloca %struct.int_sqrt*, align 8";
+"usqrt  %4 = alloca %struct.int_sqrt*, align 8" -> "usqrt  %5 = alloca i64, align 8";
+"usqrt  %5 = alloca i64, align 8" -> "usqrt  %6 = alloca i64, align 8";
+"usqrt  %6 = alloca i64, align 8" -> "usqrt  %7 = alloca i64, align 8";
+"usqrt  %7 = alloca i64, align 8" -> "usqrt  %8 = alloca i32, align 4";
+"usqrt  %8 = alloca i32, align 4" -> "usqrt  store i64 %0, i64* %3, align 8";
+"usqrt  store i64 %0, i64* %3, align 8" -> "usqrt  store %struct.int_sqrt* %1, %struct.int_sqrt** %4, align 8";
+"usqrt  store %struct.int_sqrt* %1, %struct.int_sqrt** %4, align 8" -> "usqrt  store i64 0, i64* %5, align 8";
+"usqrt  store i64 0, i64* %5, align 8" -> "usqrt  store i64 0, i64* %6, align 8";
+"usqrt  store i64 0, i64* %6, align 8" -> "usqrt  store i64 0, i64* %7, align 8";
+"usqrt  store i64 0, i64* %7, align 8" -> "usqrt  store i32 0, i32* %8, align 4";
+"usqrt  store i32 0, i32* %8, align 4" -> "usqrt0  br label %9";
+};
+subgraph cluster_BB1{
+label = BB1;
+dataflow
+"usqrt  %8 = alloca i32, align 4" -> "usqrt  %10 = load i32, i32* %8, align 4";
+"usqrt  %10 = load i32, i32* %8, align 4" -> "usqrt  %11 = icmp slt i32 %10, 32";
+"usqrt  %11 = icmp slt i32 %10, 32" -> "usqrt1  br i1 %11, label %12, label %39";
+controlflow
+"usqrt  %10 = load i32, i32* %8, align 4" -> "usqrt  %11 = icmp slt i32 %10, 32";
+"usqrt  %11 = icmp slt i32 %10, 32" -> "usqrt1  br i1 %11, label %12, label %39";
+};
+subgraph cluster_BB2{
+label = BB2;
+dataflow
+"usqrt  %6 = alloca i64, align 8" -> "usqrt  %13 = load i64, i64* %6, align 8";
+"usqrt  %13 = load i64, i64* %6, align 8" -> "usqrt  %14 = shl i64 %13, 2";
+"usqrt  %3 = alloca i64, align 8" -> "usqrt  %15 = load i64, i64* %3, align 8";
+"usqrt  %15 = load i64, i64* %3, align 8" -> "usqrt  %16 = and i64 %15, 3221225472";
+"usqrt  %16 = and i64 %15, 3221225472" -> "usqrt  %17 = lshr i64 %16, 30";
+"usqrt  %14 = shl i64 %13, 2" -> "usqrt  %18 = add i64 %14, %17";
+"usqrt  %17 = lshr i64 %16, 30" -> "usqrt  %18 = add i64 %14, %17";
+"usqrt  %18 = add i64 %14, %17" -> "usqrt  store i64 %18, i64* %6, align 8";
+"usqrt  %6 = alloca i64, align 8" -> "usqrt  store i64 %18, i64* %6, align 8";
+"usqrt  %3 = alloca i64, align 8" -> "usqrt  %19 = load i64, i64* %3, align 8";
+"usqrt  %19 = load i64, i64* %3, align 8" -> "usqrt  %20 = shl i64 %19, 2";
+"usqrt  %20 = shl i64 %19, 2" -> "usqrt  store i64 %20, i64* %3, align 8";
+"usqrt  %3 = alloca i64, align 8" -> "usqrt  store i64 %20, i64* %3, align 8";
+"usqrt  %5 = alloca i64, align 8" -> "usqrt  %21 = load i64, i64* %5, align 8";
+"usqrt  %21 = load i64, i64* %5, align 8" -> "usqrt  %22 = shl i64 %21, 1";
+"usqrt  %22 = shl i64 %21, 1" -> "usqrt  store i64 %22, i64* %5, align 8";
+"usqrt  %5 = alloca i64, align 8" -> "usqrt  store i64 %22, i64* %5, align 8";
+"usqrt  %5 = alloca i64, align 8" -> "usqrt  %23 = load i64, i64* %5, align 8";
+"usqrt  %23 = load i64, i64* %5, align 8" -> "usqrt  %24 = shl i64 %23, 1";
+"usqrt  %24 = shl i64 %23, 1" -> "usqrt  %25 = add i64 %24, 1";
+"usqrt  %25 = add i64 %24, 1" -> "usqrt  store i64 %25, i64* %7, align 8";
+"usqrt  %7 = alloca i64, align 8" -> "usqrt  store i64 %25, i64* %7, align 8";
+"usqrt  %6 = alloca i64, align 8" -> "usqrt  %26 = load i64, i64* %6, align 8";
+"usqrt  %7 = alloca i64, align 8" -> "usqrt  %27 = load i64, i64* %7, align 8";
+"usqrt  %26 = load i64, i64* %6, align 8" -> "usqrt  %28 = icmp uge i64 %26, %27";
+"usqrt  %27 = load i64, i64* %7, align 8" -> "usqrt  %28 = icmp uge i64 %26, %27";
+"usqrt  %28 = icmp uge i64 %26, %27" -> "usqrt2  br i1 %28, label %29, label %35";
+controlflow
+"usqrt  %13 = load i64, i64* %6, align 8" -> "usqrt  %14 = shl i64 %13, 2";
+"usqrt  %14 = shl i64 %13, 2" -> "usqrt  %15 = load i64, i64* %3, align 8";
+"usqrt  %15 = load i64, i64* %3, align 8" -> "usqrt  %16 = and i64 %15, 3221225472";
+"usqrt  %16 = and i64 %15, 3221225472" -> "usqrt  %17 = lshr i64 %16, 30";
+"usqrt  %17 = lshr i64 %16, 30" -> "usqrt  %18 = add i64 %14, %17";
+"usqrt  %18 = add i64 %14, %17" -> "usqrt  store i64 %18, i64* %6, align 8";
+"usqrt  store i64 %18, i64* %6, align 8" -> "usqrt  %19 = load i64, i64* %3, align 8";
+"usqrt  %19 = load i64, i64* %3, align 8" -> "usqrt  %20 = shl i64 %19, 2";
+"usqrt  %20 = shl i64 %19, 2" -> "usqrt  store i64 %20, i64* %3, align 8";
+"usqrt  store i64 %20, i64* %3, align 8" -> "usqrt  %21 = load i64, i64* %5, align 8";
+"usqrt  %21 = load i64, i64* %5, align 8" -> "usqrt  %22 = shl i64 %21, 1";
+"usqrt  %22 = shl i64 %21, 1" -> "usqrt  store i64 %22, i64* %5, align 8";
+"usqrt  store i64 %22, i64* %5, align 8" -> "usqrt  %23 = load i64, i64* %5, align 8";
+"usqrt  %23 = load i64, i64* %5, align 8" -> "usqrt  %24 = shl i64 %23, 1";
+"usqrt  %24 = shl i64 %23, 1" -> "usqrt  %25 = add i64 %24, 1";
+"usqrt  %25 = add i64 %24, 1" -> "usqrt  store i64 %25, i64* %7, align 8";
+"usqrt  store i64 %25, i64* %7, align 8" -> "usqrt  %26 = load i64, i64* %6, align 8";
+"usqrt  %26 = load i64, i64* %6, align 8" -> "usqrt  %27 = load i64, i64* %7, align 8";
+"usqrt  %27 = load i64, i64* %7, align 8" -> "usqrt  %28 = icmp uge i64 %26, %27";
+"usqrt  %28 = icmp uge i64 %26, %27" -> "usqrt2  br i1 %28, label %29, label %35";
+};
+subgraph cluster_BB4{
+label = BB4;
+dataflow
+"usqrt  %7 = alloca i64, align 8" -> "usqrt  %30 = load i64, i64* %7, align 8";
+"usqrt  %6 = alloca i64, align 8" -> "usqrt  %31 = load i64, i64* %6, align 8";
+"usqrt  %31 = load i64, i64* %6, align 8" -> "usqrt  %32 = sub i64 %31, %30";
+"usqrt  %30 = load i64, i64* %7, align 8" -> "usqrt  %32 = sub i64 %31, %30";
+"usqrt  %32 = sub i64 %31, %30" -> "usqrt  store i64 %32, i64* %6, align 8";
+"usqrt  %6 = alloca i64, align 8" -> "usqrt  store i64 %32, i64* %6, align 8";
+"usqrt  %5 = alloca i64, align 8" -> "usqrt  %33 = load i64, i64* %5, align 8";
+"usqrt  %33 = load i64, i64* %5, align 8" -> "usqrt  %34 = add i64 %33, 1";
+"usqrt  %34 = add i64 %33, 1" -> "usqrt  store i64 %34, i64* %5, align 8";
+"usqrt  %5 = alloca i64, align 8" -> "usqrt  store i64 %34, i64* %5, align 8";
+controlflow
+"usqrt  %30 = load i64, i64* %7, align 8" -> "usqrt  %31 = load i64, i64* %6, align 8";
+"usqrt  %31 = load i64, i64* %6, align 8" -> "usqrt  %32 = sub i64 %31, %30";
+"usqrt  %32 = sub i64 %31, %30" -> "usqrt  store i64 %32, i64* %6, align 8";
+"usqrt  store i64 %32, i64* %6, align 8" -> "usqrt  %33 = load i64, i64* %5, align 8";
+"usqrt  %33 = load i64, i64* %5, align 8" -> "usqrt  %34 = add i64 %33, 1";
+"usqrt  %34 = add i64 %33, 1" -> "usqrt  store i64 %34, i64* %5, align 8";
+"usqrt  store i64 %34, i64* %5, align 8" -> "usqrt4  br label %35";
+};
+subgraph cluster_BB5{
+label = BB5;
+dataflow
+controlflow
+"usqrt5  br label %36";
+};
+subgraph cluster_BB6{
+label = BB6;
+dataflow
+"usqrt  %8 = alloca i32, align 4" -> "usqrt  %37 = load i32, i32* %8, align 4";
+"usqrt  %37 = load i32, i32* %8, align 4" -> "usqrt  %38 = add nsw i32 %37, 1";
+"usqrt  %38 = add nsw i32 %37, 1" -> "usqrt  store i32 %38, i32* %8, align 4";
+"usqrt  %8 = alloca i32, align 4" -> "usqrt  store i32 %38, i32* %8, align 4";
+controlflow
+"usqrt  %37 = load i32, i32* %8, align 4" -> "usqrt  %38 = add nsw i32 %37, 1";
+"usqrt  %38 = add nsw i32 %37, 1" -> "usqrt  store i32 %38, i32* %8, align 4";
+"usqrt  store i32 %38, i32* %8, align 4" -> "usqrt6  br label %9";
+};
+subgraph cluster_BB3{
+label = BB3;
+dataflow
+"usqrt  %4 = alloca %struct.int_sqrt*, align 8" -> "usqrt  %40 = load %struct.int_sqrt*, %struct.int_sqrt** %4, align 8";
+"usqrt  %40 = load %struct.int_sqrt*, %struct.int_sqrt** %4, align 8" -> "usqrt  %41 = bitcast %struct.int_sqrt* %40 to i8*";
+"usqrt  %5 = alloca i64, align 8" -> "usqrt  %42 = bitcast i64* %5 to i8*";
+"usqrt  %41 = bitcast %struct.int_sqrt* %40 to i8*" -> "usqrt  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %41, i8* %42, i64 8, i32 4, i1 false)";
+"usqrt  %42 = bitcast i64* %5 to i8*" -> "usqrt  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %41, i8* %42, i64 8, i32 4, i1 false)";
+"llvm.memcpy.p0i8.p0i8.i64" -> "usqrt  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %41, i8* %42, i64 8, i32 4, i1 false)";
+"llvm.memcpy.p0i8.p0i8.i64" [ color = red ];
+controlflow
+"usqrt  %40 = load %struct.int_sqrt*, %struct.int_sqrt** %4, align 8" -> "usqrt  %41 = bitcast %struct.int_sqrt* %40 to i8*";
+"usqrt  %41 = bitcast %struct.int_sqrt* %40 to i8*" -> "usqrt  %42 = bitcast i64* %5 to i8*";
+"usqrt  %42 = bitcast i64* %5 to i8*" -> "usqrt  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %41, i8* %42, i64 8, i32 4, i1 false)";
+"usqrt  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %41, i8* %42, i64 8, i32 4, i1 false)" -> "usqrt  ret void";
+};
+};
+subgraph cluster_main{
+label = main;
+subgraph cluster_BB7{
+label = BB7;
+dataflow
+"main  %1 = alloca i32, align 4" -> "main  store i32 0, i32* %1, align 4";
+"main  %3 = alloca i64, align 8" -> "main  store i64 1072497001, i64* %3, align 8";
+"main  %2 = alloca i32, align 4" -> "main  store i32 0, i32* %2, align 4";
+controlflow
+"main  %1 = alloca i32, align 4" -> "main  %2 = alloca i32, align 4";
+"main  %2 = alloca i32, align 4" -> "main  %3 = alloca i64, align 8";
+"main  %3 = alloca i64, align 8" -> "main  %4 = alloca %struct.int_sqrt, align 4";
+"main  %4 = alloca %struct.int_sqrt, align 4" -> "main  store i32 0, i32* %1, align 4";
+"main  store i32 0, i32* %1, align 4" -> "main  store i64 1072497001, i64* %3, align 8";
+"main  store i64 1072497001, i64* %3, align 8" -> "main  store i32 0, i32* %2, align 4";
+"main  store i32 0, i32* %2, align 4" -> "main7  br label %5";
+};
+subgraph cluster_BB8{
+label = BB8;
+dataflow
+"main  %2 = alloca i32, align 4" -> "main  %6 = load i32, i32* %2, align 4";
+"main  %6 = load i32, i32* %2, align 4" -> "main  %7 = icmp slt i32 %6, 2";
+"main  %7 = icmp slt i32 %6, 2" -> "main8  br i1 %7, label %8, label %20";
+controlflow
+"main  %6 = load i32, i32* %2, align 4" -> "main  %7 = icmp slt i32 %6, 2";
+"main  %7 = icmp slt i32 %6, 2" -> "main8  br i1 %7, label %8, label %20";
+};
+subgraph cluster_BB9{
+label = BB9;
+dataflow
+"main  %2 = alloca i32, align 4" -> "main  %9 = load i32, i32* %2, align 4";
+"main  %9 = load i32, i32* %2, align 4" -> "main  %10 = sext i32 %9 to i64";
+"main  %10 = sext i32 %9 to i64" -> "main  call void @usqrt(i64 %10, %struct.int_sqrt* %4)";
+"main  %4 = alloca %struct.int_sqrt, align 4" -> "main  call void @usqrt(i64 %10, %struct.int_sqrt* %4)";
+"usqrt" -> "main  call void @usqrt(i64 %10, %struct.int_sqrt* %4)";
+"usqrt" [ color = red ];
+"main  %2 = alloca i32, align 4" -> "main  %11 = load i32, i32* %2, align 4";
+"main  %4 = alloca %struct.int_sqrt, align 4" -> "main  %12 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 0";
+"main  %12 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 0" -> "main  %13 = load i32, i32* %12, align 4";
+"main  %4 = alloca %struct.int_sqrt, align 4" -> "main  %14 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 1";
+"main  %14 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 1" -> "main  %15 = load i32, i32* %14, align 4";
+"main  %11 = load i32, i32* %2, align 4" -> "main  %16 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([34 x i8], [34 x i8]* @.str, i32 0, i32 0), i32 %11, i32 %13, i32 %15)";
+"main  %13 = load i32, i32* %12, align 4" -> "main  %16 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([34 x i8], [34 x i8]* @.str, i32 0, i32 0), i32 %11, i32 %13, i32 %15)";
+"main  %15 = load i32, i32* %14, align 4" -> "main  %16 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([34 x i8], [34 x i8]* @.str, i32 0, i32 0), i32 %11, i32 %13, i32 %15)";
+"printf" -> "main  %16 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([34 x i8], [34 x i8]* @.str, i32 0, i32 0), i32 %11, i32 %13, i32 %15)";
+"printf" [ color = red ];
+controlflow
+"main  %9 = load i32, i32* %2, align 4" -> "main  %10 = sext i32 %9 to i64";
+"main  %10 = sext i32 %9 to i64" -> "main  call void @usqrt(i64 %10, %struct.int_sqrt* %4)";
+"main  call void @usqrt(i64 %10, %struct.int_sqrt* %4)" -> "main  %11 = load i32, i32* %2, align 4";
+"main  %11 = load i32, i32* %2, align 4" -> "main  %12 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 0";
+"main  %12 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 0" -> "main  %13 = load i32, i32* %12, align 4";
+"main  %13 = load i32, i32* %12, align 4" -> "main  %14 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 1";
+"main  %14 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 1" -> "main  %15 = load i32, i32* %14, align 4";
+"main  %15 = load i32, i32* %14, align 4" -> "main  %16 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([34 x i8], [34 x i8]* @.str, i32 0, i32 0), i32 %11, i32 %13, i32 %15)";
+"main  %16 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([34 x i8], [34 x i8]* @.str, i32 0, i32 0), i32 %11, i32 %13, i32 %15)" -> "main9  br label %17";
+};
+subgraph cluster_BB11{
+label = BB11;
+dataflow
+"main  %2 = alloca i32, align 4" -> "main  %18 = load i32, i32* %2, align 4";
+"main  %18 = load i32, i32* %2, align 4" -> "main  %19 = add nsw i32 %18, 1";
+"main  %19 = add nsw i32 %18, 1" -> "main  store i32 %19, i32* %2, align 4";
+"main  %2 = alloca i32, align 4" -> "main  store i32 %19, i32* %2, align 4";
+controlflow
+"main  %18 = load i32, i32* %2, align 4" -> "main  %19 = add nsw i32 %18, 1";
+"main  %19 = add nsw i32 %18, 1" -> "main  store i32 %19, i32* %2, align 4";
+"main  store i32 %19, i32* %2, align 4" -> "main11  br label %5";
+};
+subgraph cluster_BB10{
+label = BB10;
+dataflow
+"main  %3 = alloca i64, align 8" -> "main  %21 = load i64, i64* %3, align 8";
+"main  %21 = load i64, i64* %3, align 8" -> "main  call void @usqrt(i64 %21, %struct.int_sqrt* %4)";
+"main  %4 = alloca %struct.int_sqrt, align 4" -> "main  call void @usqrt(i64 %21, %struct.int_sqrt* %4)";
+"usqrt" -> "main  call void @usqrt(i64 %21, %struct.int_sqrt* %4)";
+"usqrt" [ color = red ];
+"main  %3 = alloca i64, align 8" -> "main  %22 = load i64, i64* %3, align 8";
+"main  %4 = alloca %struct.int_sqrt, align 4" -> "main  %23 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 0";
+"main  %23 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 0" -> "main  %24 = load i32, i32* %23, align 4";
+"main  %4 = alloca %struct.int_sqrt, align 4" -> "main  %25 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 1";
+"main  %25 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 1" -> "main  %26 = load i32, i32* %25, align 4";
+"main  %22 = load i64, i64* %3, align 8" -> "main  %27 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([33 x i8], [33 x i8]* @.str.1, i32 0, i32 0), i64 %22, i32 %24, i32 %26)";
+"main  %24 = load i32, i32* %23, align 4" -> "main  %27 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([33 x i8], [33 x i8]* @.str.1, i32 0, i32 0), i64 %22, i32 %24, i32 %26)";
+"main  %26 = load i32, i32* %25, align 4" -> "main  %27 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([33 x i8], [33 x i8]* @.str.1, i32 0, i32 0), i64 %22, i32 %24, i32 %26)";
+"printf" -> "main  %27 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([33 x i8], [33 x i8]* @.str.1, i32 0, i32 0), i64 %22, i32 %24, i32 %26)";
+"printf" [ color = red ];
+controlflow
+"main  %21 = load i64, i64* %3, align 8" -> "main  call void @usqrt(i64 %21, %struct.int_sqrt* %4)";
+"main  call void @usqrt(i64 %21, %struct.int_sqrt* %4)" -> "main  %22 = load i64, i64* %3, align 8";
+"main  %22 = load i64, i64* %3, align 8" -> "main  %23 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 0";
+"main  %23 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 0" -> "main  %24 = load i32, i32* %23, align 4";
+"main  %24 = load i32, i32* %23, align 4" -> "main  %25 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 1";
+"main  %25 = getelementptr inbounds %struct.int_sqrt, %struct.int_sqrt* %4, i32 0, i32 1" -> "main  %26 = load i32, i32* %25, align 4";
+"main  %26 = load i32, i32* %25, align 4" -> "main  %27 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([33 x i8], [33 x i8]* @.str.1, i32 0, i32 0), i64 %22, i32 %24, i32 %26)";
+"main  %27 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([33 x i8], [33 x i8]* @.str.1, i32 0, i32 0), i64 %22, i32 %24, i32 %26)" -> "main  ret i32 0";
+};
+};
+bb_call
+"usqrt0  br label %9"-> "usqrt  %10 = load i32, i32* %8, align 4";[ltail = cluster_BB0 lhead = cluster_BB1];
+"usqrt1  br i1 %11, label %12, label %39"-> "usqrt  %13 = load i64, i64* %6, align 8";[ltail = cluster_BB1 lhead = cluster_BB2];
+"usqrt1  br i1 %11, label %12, label %39"-> "usqrt  %40 = load %struct.int_sqrt*, %struct.int_sqrt** %4, align 8";[ltail = cluster_BB1 lhead = cluster_BB3];
+"usqrt2  br i1 %28, label %29, label %35"-> "usqrt  %30 = load i64, i64* %7, align 8";[ltail = cluster_BB2 lhead = cluster_BB4];
+"usqrt2  br i1 %28, label %29, label %35"-> "usqrt5  br label %36";[ltail = cluster_BB2 lhead = cluster_BB5];
+"usqrt4  br label %35"-> "usqrt5  br label %36";[ltail = cluster_BB4 lhead = cluster_BB5];
+"usqrt5  br label %36"-> "usqrt  %37 = load i32, i32* %8, align 4";[ltail = cluster_BB5 lhead = cluster_BB6];
+"usqrt6  br label %9"-> "usqrt  %10 = load i32, i32* %8, align 4";[ltail = cluster_BB6 lhead = cluster_BB1];
+"main7  br label %5"-> "main  %6 = load i32, i32* %2, align 4";[ltail = cluster_BB7 lhead = cluster_BB8];
+"main8  br i1 %7, label %8, label %20"-> "main  %9 = load i32, i32* %2, align 4";[ltail = cluster_BB8 lhead = cluster_BB9];
+"main8  br i1 %7, label %8, label %20"-> "main  %21 = load i64, i64* %3, align 8";[ltail = cluster_BB8 lhead = cluster_BB10];
+"main9  br label %17"-> "main  %18 = load i32, i32* %2, align 4";[ltail = cluster_BB9 lhead = cluster_BB11];
+"main11  br label %5"-> "main  %6 = load i32, i32* %2, align 4";[ltail = cluster_BB11 lhead = cluster_BB8];
+fun_call
+"main  call void @usqrt(i64 %10, %struct.int_sqrt* %4)"-> "usqrt  %3 = alloca i64, align 8";[lhead = cluster_BB0];
+"usqrt  ret void"-> "main  call void @usqrt(i64 %10, %struct.int_sqrt* %4)";[lhead = cluster_BB0];
+"main  call void @usqrt(i64 %21, %struct.int_sqrt* %4)"-> "usqrt  %3 = alloca i64, align 8";[lhead = cluster_BB0];
+"usqrt  ret void"-> "main  call void @usqrt(i64 %21, %struct.int_sqrt* %4)";[lhead = cluster_BB0];

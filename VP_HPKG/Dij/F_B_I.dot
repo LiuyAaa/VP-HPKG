@@ -1,0 +1,525 @@
+0$get_position  %3 = alloca i32, align 4
+1$get_position  %4 = alloca %struct.lGraph*, align 8
+2$get_position  %5 = alloca i8, align 1
+3$get_position  %6 = alloca i32, align 4
+4$get_position  store %struct.lGraph* %0, %struct.lGraph** %4, align 8
+5$get_position  store i8 %1, i8* %5, align 1
+6$get_position  store i32 0, i32* %6, align 4
+7$get_position0  br label %7
+8$get_position  %8 = load i32, i32* %6, align 4
+9$get_position  %9 = load %struct.lGraph*, %struct.lGraph** %4, align 8
+10$get_position  %10 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %9, i32 0, i32 0
+11$get_position  %11 = load i32, i32* %10, align 8
+12$get_position  %12 = icmp slt i32 %8, %11
+13$get_position1  br i1 %12, label %13, label %31
+14$get_position  %14 = load i8, i8* %5, align 1
+15$get_position  %15 = sext i8 %14 to i32
+16$get_position  %16 = load %struct.lGraph*, %struct.lGraph** %4, align 8
+17$get_position  %17 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %16, i32 0, i32 2
+18$get_position  %18 = load i32, i32* %6, align 4
+19$get_position  %19 = sext i32 %18 to i64
+20$get_position  %20 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %17, i64 0, i64 %19
+21$get_position  %21 = getelementptr inbounds %struct.vNode, %struct.vNode* %20, i32 0, i32 0
+22$get_position  %22 = load i8, i8* %21, align 8
+23$get_position  %23 = sext i8 %22 to i32
+24$get_position  %24 = icmp eq i32 %15, %23
+25$get_position2  br i1 %24, label %25, label %27
+26$get_position  %26 = load i32, i32* %6, align 4
+27$get_position  store i32 %26, i32* %3, align 4
+28$get_position4  br label %32
+29$get_position5  br label %28
+30$get_position  %29 = load i32, i32* %6, align 4
+31$get_position  %30 = add nsw i32 %29, 1
+32$get_position  store i32 %30, i32* %6, align 4
+33$get_position7  br label %7
+34$get_position  store i32 -1, i32* %3, align 4
+35$get_position3  br label %32
+36$get_position  %33 = load i32, i32* %3, align 4
+37$get_position  ret i32 %33
+38$link_last  %3 = alloca %struct.eNode*, align 8
+39$link_last  %4 = alloca %struct.eNode*, align 8
+40$link_last  store %struct.eNode* %0, %struct.eNode** %3, align 8
+41$link_last  store %struct.eNode* %1, %struct.eNode** %4, align 8
+42$link_last8  br label %5
+43$link_last  %6 = load %struct.eNode*, %struct.eNode** %3, align 8
+44$link_last  %7 = getelementptr inbounds %struct.eNode, %struct.eNode* %6, i32 0, i32 2
+45$link_last  %8 = load %struct.eNode*, %struct.eNode** %7, align 8
+46$link_last  %9 = icmp ne %struct.eNode* %8, null
+47$link_last9  br i1 %9, label %10, label %14
+48$link_last  %11 = load %struct.eNode*, %struct.eNode** %3, align 8
+49$link_last  %12 = getelementptr inbounds %struct.eNode, %struct.eNode* %11, i32 0, i32 2
+50$link_last  %13 = load %struct.eNode*, %struct.eNode** %12, align 8
+51$link_last  store %struct.eNode* %13, %struct.eNode** %3, align 8
+52$link_last10  br label %5
+53$link_last  %15 = load %struct.eNode*, %struct.eNode** %4, align 8
+54$link_last  %16 = load %struct.eNode*, %struct.eNode** %3, align 8
+55$link_last  %17 = getelementptr inbounds %struct.eNode, %struct.eNode* %16, i32 0, i32 2
+56$link_last  store %struct.eNode* %15, %struct.eNode** %17, align 8
+57$link_last  ret void
+58$TraverseGraph  %2 = alloca %struct.lGraph*, align 8
+59$TraverseGraph  %3 = alloca i32, align 4
+60$TraverseGraph  %4 = alloca %struct.eNode*, align 8
+61$TraverseGraph  store %struct.lGraph* %0, %struct.lGraph** %2, align 8
+62$TraverseGraph  store i32 0, i32* %3, align 4
+63$TraverseGraph12  br label %5
+64$TraverseGraph  %6 = load i32, i32* %3, align 4
+65$TraverseGraph  %7 = load %struct.lGraph*, %struct.lGraph** %2, align 8
+66$TraverseGraph  %8 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %7, i32 0, i32 0
+67$TraverseGraph  %9 = load i32, i32* %8, align 8
+68$TraverseGraph  %10 = icmp slt i32 %6, %9
+69$TraverseGraph13  br i1 %10, label %11, label %51
+70$TraverseGraph  %12 = load %struct.lGraph*, %struct.lGraph** %2, align 8
+71$TraverseGraph  %13 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %12, i32 0, i32 2
+72$TraverseGraph  %14 = load i32, i32* %3, align 4
+73$TraverseGraph  %15 = sext i32 %14 to i64
+74$TraverseGraph  %16 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %13, i64 0, i64 %15
+75$TraverseGraph  %17 = getelementptr inbounds %struct.vNode, %struct.vNode* %16, i32 0, i32 0
+76$TraverseGraph  %18 = load i8, i8* %17, align 8
+77$TraverseGraph  %19 = sext i8 %18 to i32
+78$TraverseGraph  %20 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str, i32 0, i32 0), i32 %19)
+79$TraverseGraph  %21 = load %struct.lGraph*, %struct.lGraph** %2, align 8
+80$TraverseGraph  %22 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %21, i32 0, i32 2
+81$TraverseGraph  %23 = load i32, i32* %3, align 4
+82$TraverseGraph  %24 = sext i32 %23 to i64
+83$TraverseGraph  %25 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %22, i64 0, i64 %24
+84$TraverseGraph  %26 = getelementptr inbounds %struct.vNode, %struct.vNode* %25, i32 0, i32 1
+85$TraverseGraph  %27 = load %struct.eNode*, %struct.eNode** %26, align 8
+86$TraverseGraph  store %struct.eNode* %27, %struct.eNode** %4, align 8
+87$TraverseGraph14  br label %28
+88$TraverseGraph  %29 = load %struct.eNode*, %struct.eNode** %4, align 8
+89$TraverseGraph  %30 = icmp ne %struct.eNode* %29, null
+90$TraverseGraph16  br i1 %30, label %31, label %46
+91$TraverseGraph  %32 = load %struct.lGraph*, %struct.lGraph** %2, align 8
+92$TraverseGraph  %33 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %32, i32 0, i32 2
+93$TraverseGraph  %34 = load %struct.eNode*, %struct.eNode** %4, align 8
+94$TraverseGraph  %35 = getelementptr inbounds %struct.eNode, %struct.eNode* %34, i32 0, i32 0
+95$TraverseGraph  %36 = load i32, i32* %35, align 8
+96$TraverseGraph  %37 = sext i32 %36 to i64
+97$TraverseGraph  %38 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %33, i64 0, i64 %37
+98$TraverseGraph  %39 = getelementptr inbounds %struct.vNode, %struct.vNode* %38, i32 0, i32 0
+99$TraverseGraph  %40 = load i8, i8* %39, align 8
+100$TraverseGraph  %41 = sext i8 %40 to i32
+101$TraverseGraph  %42 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.1, i32 0, i32 0), i32 %41)
+102$TraverseGraph  %43 = load %struct.eNode*, %struct.eNode** %4, align 8
+103$TraverseGraph  %44 = getelementptr inbounds %struct.eNode, %struct.eNode* %43, i32 0, i32 2
+104$TraverseGraph  %45 = load %struct.eNode*, %struct.eNode** %44, align 8
+105$TraverseGraph  store %struct.eNode* %45, %struct.eNode** %4, align 8
+106$TraverseGraph17  br label %28
+107$TraverseGraph  %47 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.2, i32 0, i32 0))
+108$TraverseGraph18  br label %48
+109$TraverseGraph  %49 = load i32, i32* %3, align 4
+110$TraverseGraph  %50 = add nsw i32 %49, 1
+111$TraverseGraph  store i32 %50, i32* %3, align 4
+112$TraverseGraph19  br label %5
+113$TraverseGraph  ret void
+114$GetWeight  %4 = alloca i32, align 4
+115$GetWeight  %5 = alloca %struct.lGraph*, align 8
+116$GetWeight  %6 = alloca i32, align 4
+117$GetWeight  %7 = alloca i32, align 4
+118$GetWeight  %8 = alloca %struct.eNode*, align 8
+119$GetWeight  store %struct.lGraph* %0, %struct.lGraph** %5, align 8
+120$GetWeight  store i32 %1, i32* %6, align 4
+121$GetWeight  store i32 %2, i32* %7, align 4
+122$GetWeight  %9 = load i32, i32* %6, align 4
+123$GetWeight  %10 = load i32, i32* %7, align 4
+124$GetWeight  %11 = icmp eq i32 %9, %10
+125$GetWeight20  br i1 %11, label %12, label %13
+126$GetWeight  store i32 0, i32* %4, align 4
+127$GetWeight21  br label %39
+128$GetWeight  %14 = load %struct.lGraph*, %struct.lGraph** %5, align 8
+129$GetWeight  %15 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %14, i32 0, i32 2
+130$GetWeight  %16 = load i32, i32* %6, align 4
+131$GetWeight  %17 = sext i32 %16 to i64
+132$GetWeight  %18 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %15, i64 0, i64 %17
+133$GetWeight  %19 = getelementptr inbounds %struct.vNode, %struct.vNode* %18, i32 0, i32 1
+134$GetWeight  %20 = load %struct.eNode*, %struct.eNode** %19, align 8
+135$GetWeight  store %struct.eNode* %20, %struct.eNode** %8, align 8
+136$GetWeight22  br label %21
+137$GetWeight  %22 = load %struct.eNode*, %struct.eNode** %8, align 8
+138$GetWeight  %23 = icmp ne %struct.eNode* %22, null
+139$GetWeight24  br i1 %23, label %24, label %38
+140$GetWeight  %25 = load %struct.eNode*, %struct.eNode** %8, align 8
+141$GetWeight  %26 = getelementptr inbounds %struct.eNode, %struct.eNode* %25, i32 0, i32 0
+142$GetWeight  %27 = load i32, i32* %26, align 8
+143$GetWeight  %28 = load i32, i32* %7, align 4
+144$GetWeight  %29 = icmp eq i32 %27, %28
+145$GetWeight25  br i1 %29, label %30, label %34
+146$GetWeight  %31 = load %struct.eNode*, %struct.eNode** %8, align 8
+147$GetWeight  %32 = getelementptr inbounds %struct.eNode, %struct.eNode* %31, i32 0, i32 1
+148$GetWeight  %33 = load i32, i32* %32, align 4
+149$GetWeight  store i32 %33, i32* %4, align 4
+150$GetWeight27  br label %39
+151$GetWeight  %35 = load %struct.eNode*, %struct.eNode** %8, align 8
+152$GetWeight  %36 = getelementptr inbounds %struct.eNode, %struct.eNode* %35, i32 0, i32 2
+153$GetWeight  %37 = load %struct.eNode*, %struct.eNode** %36, align 8
+154$GetWeight  store %struct.eNode* %37, %struct.eNode** %8, align 8
+155$GetWeight28  br label %21
+156$GetWeight  store i32 2147483647, i32* %4, align 4
+157$GetWeight26  br label %39
+158$GetWeight  %40 = load i32, i32* %4, align 4
+159$GetWeight  ret i32 %40
+160$Dijkstra  %3 = alloca %struct.lGraph*, align 8
+161$Dijkstra  %4 = alloca i32, align 4
+162$Dijkstra  %5 = alloca [100 x i32], align 16
+163$Dijkstra  %6 = alloca i32, align 4
+164$Dijkstra  %7 = alloca i32, align 4
+165$Dijkstra  %8 = alloca i32, align 4
+166$Dijkstra  %9 = alloca i32, align 4
+167$Dijkstra  %10 = alloca [100 x i32], align 16
+168$Dijkstra  %11 = alloca i32, align 4
+169$Dijkstra  %12 = alloca i32, align 4
+170$Dijkstra  store %struct.lGraph* %0, %struct.lGraph** %3, align 8
+171$Dijkstra  store i32 %1, i32* %4, align 4
+172$Dijkstra  %13 = load %struct.lGraph*, %struct.lGraph** %3, align 8
+173$Dijkstra  %14 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %13, i32 0, i32 0
+174$Dijkstra  %15 = load i32, i32* %14, align 8
+175$Dijkstra  store i32 %15, i32* %11, align 4
+176$Dijkstra  store i32 0, i32* %6, align 4
+177$Dijkstra29  br label %16
+178$Dijkstra  %17 = load i32, i32* %6, align 4
+179$Dijkstra  %18 = load i32, i32* %11, align 4
+180$Dijkstra  %19 = icmp slt i32 %17, %18
+181$Dijkstra30  br i1 %19, label %20, label %34
+182$Dijkstra  %21 = load %struct.lGraph*, %struct.lGraph** %3, align 8
+183$Dijkstra  %22 = load i32, i32* %4, align 4
+184$Dijkstra  %23 = load i32, i32* %6, align 4
+185$Dijkstra  %24 = call i32 @GetWeight(%struct.lGraph* %21, i32 %22, i32 %23)
+186$Dijkstra  %25 = load i32, i32* %6, align 4
+187$Dijkstra  %26 = sext i32 %25 to i64
+188$Dijkstra  %27 = getelementptr inbounds [100 x i32], [100 x i32]* %5, i64 0, i64 %26
+189$Dijkstra  store i32 %24, i32* %27, align 4
+190$Dijkstra  %28 = load i32, i32* %6, align 4
+191$Dijkstra  %29 = sext i32 %28 to i64
+192$Dijkstra  %30 = getelementptr inbounds [100 x i32], [100 x i32]* %10, i64 0, i64 %29
+193$Dijkstra  store i32 0, i32* %30, align 4
+194$Dijkstra31  br label %31
+195$Dijkstra  %32 = load i32, i32* %6, align 4
+196$Dijkstra  %33 = add nsw i32 %32, 1
+197$Dijkstra  store i32 %33, i32* %6, align 4
+198$Dijkstra33  br label %16
+199$Dijkstra  %35 = load i32, i32* %4, align 4
+200$Dijkstra  %36 = sext i32 %35 to i64
+201$Dijkstra  %37 = getelementptr inbounds [100 x i32], [100 x i32]* %10, i64 0, i64 %36
+202$Dijkstra  store i32 1, i32* %37, align 4
+203$Dijkstra  %38 = load i32, i32* %4, align 4
+204$Dijkstra  %39 = sext i32 %38 to i64
+205$Dijkstra  %40 = getelementptr inbounds [100 x i32], [100 x i32]* %5, i64 0, i64 %39
+206$Dijkstra  store i32 0, i32* %40, align 4
+207$Dijkstra  store i32 1, i32* %6, align 4
+208$Dijkstra32  br label %41
+209$Dijkstra  %42 = load i32, i32* %6, align 4
+210$Dijkstra  %43 = load i32, i32* %11, align 4
+211$Dijkstra  %44 = icmp slt i32 %42, %43
+212$Dijkstra34  br i1 %44, label %45, label %120
+213$Dijkstra  store i32 2147483647, i32* %9, align 4
+214$Dijkstra  store i32 0, i32* %7, align 4
+215$Dijkstra35  br label %46
+216$Dijkstra  %47 = load i32, i32* %7, align 4
+217$Dijkstra  %48 = load i32, i32* %11, align 4
+218$Dijkstra  %49 = icmp slt i32 %47, %48
+219$Dijkstra37  br i1 %49, label %50, label %73
+220$Dijkstra  %51 = load i32, i32* %7, align 4
+221$Dijkstra  %52 = sext i32 %51 to i64
+222$Dijkstra  %53 = getelementptr inbounds [100 x i32], [100 x i32]* %10, i64 0, i64 %52
+223$Dijkstra  %54 = load i32, i32* %53, align 4
+224$Dijkstra  %55 = icmp eq i32 %54, 0
+225$Dijkstra38  br i1 %55, label %56, label %69
+226$Dijkstra  %57 = load i32, i32* %7, align 4
+227$Dijkstra  %58 = sext i32 %57 to i64
+228$Dijkstra  %59 = getelementptr inbounds [100 x i32], [100 x i32]* %5, i64 0, i64 %58
+229$Dijkstra  %60 = load i32, i32* %59, align 4
+230$Dijkstra  %61 = load i32, i32* %9, align 4
+231$Dijkstra  %62 = icmp slt i32 %60, %61
+232$Dijkstra40  br i1 %62, label %63, label %69
+233$Dijkstra  %64 = load i32, i32* %7, align 4
+234$Dijkstra  %65 = sext i32 %64 to i64
+235$Dijkstra  %66 = getelementptr inbounds [100 x i32], [100 x i32]* %5, i64 0, i64 %65
+236$Dijkstra  %67 = load i32, i32* %66, align 4
+237$Dijkstra  store i32 %67, i32* %9, align 4
+238$Dijkstra  %68 = load i32, i32* %7, align 4
+239$Dijkstra  store i32 %68, i32* %8, align 4
+240$Dijkstra42  br label %69
+241$Dijkstra41  br label %70
+242$Dijkstra  %71 = load i32, i32* %7, align 4
+243$Dijkstra  %72 = add nsw i32 %71, 1
+244$Dijkstra  store i32 %72, i32* %7, align 4
+245$Dijkstra43  br label %46
+246$Dijkstra  %74 = load i32, i32* %8, align 4
+247$Dijkstra  %75 = sext i32 %74 to i64
+248$Dijkstra  %76 = getelementptr inbounds [100 x i32], [100 x i32]* %10, i64 0, i64 %75
+249$Dijkstra  store i32 1, i32* %76, align 4
+250$Dijkstra  store i32 0, i32* %7, align 4
+251$Dijkstra39  br label %77
+252$Dijkstra  %78 = load i32, i32* %7, align 4
+253$Dijkstra  %79 = load i32, i32* %11, align 4
+254$Dijkstra  %80 = icmp slt i32 %78, %79
+255$Dijkstra44  br i1 %80, label %81, label %116
+256$Dijkstra  %82 = load %struct.lGraph*, %struct.lGraph** %3, align 8
+257$Dijkstra  %83 = load i32, i32* %8, align 4
+258$Dijkstra  %84 = load i32, i32* %7, align 4
+259$Dijkstra  %85 = call i32 @GetWeight(%struct.lGraph* %82, i32 %83, i32 %84)
+260$Dijkstra  store i32 %85, i32* %12, align 4
+261$Dijkstra  %86 = load i32, i32* %12, align 4
+262$Dijkstra  %87 = icmp eq i32 %86, 2147483647
+263$Dijkstra45  br i1 %87, label %88, label %89
+264$Dijkstra47  br label %93
+265$Dijkstra  %90 = load i32, i32* %12, align 4
+266$Dijkstra  %91 = load i32, i32* %9, align 4
+267$Dijkstra  %92 = add nsw i32 %90, %91
+268$Dijkstra48  br label %93
+269$Dijkstra  %94 = phi i32 [ 2147483647, %88 ], [ %92, %89 ]
+270$Dijkstra  store i32 %94, i32* %12, align 4
+271$Dijkstra  %95 = load i32, i32* %7, align 4
+272$Dijkstra  %96 = sext i32 %95 to i64
+273$Dijkstra  %97 = getelementptr inbounds [100 x i32], [100 x i32]* %10, i64 0, i64 %96
+274$Dijkstra  %98 = load i32, i32* %97, align 4
+275$Dijkstra  %99 = icmp eq i32 %98, 0
+276$Dijkstra49  br i1 %99, label %100, label %112
+277$Dijkstra  %101 = load i32, i32* %12, align 4
+278$Dijkstra  %102 = load i32, i32* %7, align 4
+279$Dijkstra  %103 = sext i32 %102 to i64
+280$Dijkstra  %104 = getelementptr inbounds [100 x i32], [100 x i32]* %5, i64 0, i64 %103
+281$Dijkstra  %105 = load i32, i32* %104, align 4
+282$Dijkstra  %106 = icmp slt i32 %101, %105
+283$Dijkstra50  br i1 %106, label %107, label %112
+284$Dijkstra  %108 = load i32, i32* %12, align 4
+285$Dijkstra  %109 = load i32, i32* %7, align 4
+286$Dijkstra  %110 = sext i32 %109 to i64
+287$Dijkstra  %111 = getelementptr inbounds [100 x i32], [100 x i32]* %5, i64 0, i64 %110
+288$Dijkstra  store i32 %108, i32* %111, align 4
+289$Dijkstra52  br label %112
+290$Dijkstra51  br label %113
+291$Dijkstra  %114 = load i32, i32* %7, align 4
+292$Dijkstra  %115 = add nsw i32 %114, 1
+293$Dijkstra  store i32 %115, i32* %7, align 4
+294$Dijkstra53  br label %77
+295$Dijkstra46  br label %117
+296$Dijkstra  %118 = load i32, i32* %6, align 4
+297$Dijkstra  %119 = add nsw i32 %118, 1
+298$Dijkstra  store i32 %119, i32* %6, align 4
+299$Dijkstra54  br label %41
+300$Dijkstra  %121 = load %struct.lGraph*, %struct.lGraph** %3, align 8
+301$Dijkstra  %122 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %121, i32 0, i32 2
+302$Dijkstra  %123 = load i32, i32* %4, align 4
+303$Dijkstra  %124 = sext i32 %123 to i64
+304$Dijkstra  %125 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %122, i64 0, i64 %124
+305$Dijkstra  %126 = getelementptr inbounds %struct.vNode, %struct.vNode* %125, i32 0, i32 0
+306$Dijkstra  %127 = load i8, i8* %126, align 8
+307$Dijkstra  %128 = sext i8 %127 to i32
+308$Dijkstra  %129 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.3, i32 0, i32 0), i32 %128)
+309$Dijkstra  store i32 0, i32* %6, align 4
+310$Dijkstra36  br label %130
+311$Dijkstra  %131 = load i32, i32* %6, align 4
+312$Dijkstra  %132 = load i32, i32* %11, align 4
+313$Dijkstra  %133 = icmp slt i32 %131, %132
+314$Dijkstra55  br i1 %133, label %134, label %159
+315$Dijkstra  %135 = load %struct.lGraph*, %struct.lGraph** %3, align 8
+316$Dijkstra  %136 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %135, i32 0, i32 2
+317$Dijkstra  %137 = load i32, i32* %4, align 4
+318$Dijkstra  %138 = sext i32 %137 to i64
+319$Dijkstra  %139 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %136, i64 0, i64 %138
+320$Dijkstra  %140 = getelementptr inbounds %struct.vNode, %struct.vNode* %139, i32 0, i32 0
+321$Dijkstra  %141 = load i8, i8* %140, align 8
+322$Dijkstra  %142 = sext i8 %141 to i32
+323$Dijkstra  %143 = load %struct.lGraph*, %struct.lGraph** %3, align 8
+324$Dijkstra  %144 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %143, i32 0, i32 2
+325$Dijkstra  %145 = load i32, i32* %6, align 4
+326$Dijkstra  %146 = sext i32 %145 to i64
+327$Dijkstra  %147 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %144, i64 0, i64 %146
+328$Dijkstra  %148 = getelementptr inbounds %struct.vNode, %struct.vNode* %147, i32 0, i32 0
+329$Dijkstra  %149 = load i8, i8* %148, align 8
+330$Dijkstra  %150 = sext i8 %149 to i32
+331$Dijkstra  %151 = load i32, i32* %6, align 4
+332$Dijkstra  %152 = sext i32 %151 to i64
+333$Dijkstra  %153 = getelementptr inbounds [100 x i32], [100 x i32]* %5, i64 0, i64 %152
+334$Dijkstra  %154 = load i32, i32* %153, align 4
+335$Dijkstra  %155 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.4, i32 0, i32 0), i32 %142, i32 %150, i32 %154)
+336$Dijkstra56  br label %156
+337$Dijkstra  %157 = load i32, i32* %6, align 4
+338$Dijkstra  %158 = add nsw i32 %157, 1
+339$Dijkstra  store i32 %158, i32* %6, align 4
+340$Dijkstra58  br label %130
+341$Dijkstra  ret void
+342$main  %3 = alloca i32, align 4
+343$main  %4 = alloca i32, align 4
+344$main  %5 = alloca i8**, align 8
+345$main  %6 = alloca [7 x i8], align 1
+346$main  %7 = alloca [12 x %struct.eData], align 16
+347$main  %8 = alloca i32, align 4
+348$main  %9 = alloca i32, align 4
+349$main  %10 = alloca %struct.lGraph*, align 8
+350$main  %11 = alloca %struct.eNode*, align 8
+351$main  %12 = alloca %struct.eNode*, align 8
+352$main  %13 = alloca i32, align 4
+353$main  %14 = alloca i32, align 4
+354$main  %15 = alloca i32, align 4
+355$main  store i32 0, i32* %3, align 4
+356$main  store i32 %0, i32* %4, align 4
+357$main  store i8** %1, i8*** %5, align 8
+358$main  %16 = bitcast [7 x i8]* %6 to i8*
+359$main  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %16, i8* getelementptr inbounds ([7 x i8], [7 x i8]* @main.vexs, i32 0, i32 0), i64 7, i32 1, i1 false)
+360$main  %17 = bitcast [12 x %struct.eData]* %7 to i8*
+361$main  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %17, i8* getelementptr inbounds ([12 x %struct.eData], [12 x %struct.eData]* @main.edges, i32 0, i32 0, i32 0), i64 96, i32 16, i1 false)
+362$main  store i32 7, i32* %8, align 4
+363$main  store i32 12, i32* %9, align 4
+364$main  %18 = call noalias i8* @malloc(i64 328) #4
+365$main  %19 = bitcast i8* %18 to %struct.lGraph*
+366$main  store %struct.lGraph* %19, %struct.lGraph** %10, align 8
+367$main  %20 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+368$main  %21 = bitcast %struct.lGraph* %20 to i8*
+369$main  call void @llvm.memset.p0i8.i64(i8* %21, i8 0, i64 328, i32 8, i1 false)
+370$main  %22 = load i32, i32* %8, align 4
+371$main  %23 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+372$main  %24 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %23, i32 0, i32 0
+373$main  store i32 %22, i32* %24, align 8
+374$main  %25 = load i32, i32* %9, align 4
+375$main  %26 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+376$main  %27 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %26, i32 0, i32 1
+377$main  store i32 %25, i32* %27, align 4
+378$main  store i32 0, i32* %13, align 4
+379$main59  br label %28
+380$main  %29 = load i32, i32* %13, align 4
+381$main  %30 = load i32, i32* %8, align 4
+382$main  %31 = icmp slt i32 %29, %30
+383$main60  br i1 %31, label %32, label %52
+384$main  %33 = load i32, i32* %13, align 4
+385$main  %34 = sext i32 %33 to i64
+386$main  %35 = getelementptr inbounds [7 x i8], [7 x i8]* %6, i64 0, i64 %34
+387$main  %36 = load i8, i8* %35, align 1
+388$main  %37 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+389$main  %38 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %37, i32 0, i32 2
+390$main  %39 = load i32, i32* %13, align 4
+391$main  %40 = sext i32 %39 to i64
+392$main  %41 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %38, i64 0, i64 %40
+393$main  %42 = getelementptr inbounds %struct.vNode, %struct.vNode* %41, i32 0, i32 0
+394$main  store i8 %36, i8* %42, align 8
+395$main  %43 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+396$main  %44 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %43, i32 0, i32 2
+397$main  %45 = load i32, i32* %13, align 4
+398$main  %46 = sext i32 %45 to i64
+399$main  %47 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %44, i64 0, i64 %46
+400$main  %48 = getelementptr inbounds %struct.vNode, %struct.vNode* %47, i32 0, i32 1
+401$main  store %struct.eNode* null, %struct.eNode** %48, align 8
+402$main61  br label %49
+403$main  %50 = load i32, i32* %13, align 4
+404$main  %51 = add nsw i32 %50, 1
+405$main  store i32 %51, i32* %13, align 4
+406$main63  br label %28
+407$main  store i32 0, i32* %13, align 4
+408$main62  br label %53
+409$main  %54 = load i32, i32* %13, align 4
+410$main  %55 = load i32, i32* %9, align 4
+411$main  %56 = icmp slt i32 %54, %55
+412$main64  br i1 %56, label %57, label %151
+413$main  %58 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+414$main  %59 = load i32, i32* %13, align 4
+415$main  %60 = sext i32 %59 to i64
+416$main  %61 = getelementptr inbounds [12 x %struct.eData], [12 x %struct.eData]* %7, i64 0, i64 %60
+417$main  %62 = getelementptr inbounds %struct.eData, %struct.eData* %61, i32 0, i32 0
+418$main  %63 = load i8, i8* %62, align 8
+419$main  %64 = call i32 @get_position(%struct.lGraph* %58, i8 signext %63)
+420$main  store i32 %64, i32* %14, align 4
+421$main  %65 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+422$main  %66 = load i32, i32* %13, align 4
+423$main  %67 = sext i32 %66 to i64
+424$main  %68 = getelementptr inbounds [12 x %struct.eData], [12 x %struct.eData]* %7, i64 0, i64 %67
+425$main  %69 = getelementptr inbounds %struct.eData, %struct.eData* %68, i32 0, i32 1
+426$main  %70 = load i8, i8* %69, align 1
+427$main  %71 = call i32 @get_position(%struct.lGraph* %65, i8 signext %70)
+428$main  store i32 %71, i32* %15, align 4
+429$main  %72 = call noalias i8* @malloc(i64 16) #4
+430$main  %73 = bitcast i8* %72 to %struct.eNode*
+431$main  store %struct.eNode* %73, %struct.eNode** %11, align 8
+432$main  %74 = load i32, i32* %15, align 4
+433$main  %75 = load %struct.eNode*, %struct.eNode** %11, align 8
+434$main  %76 = getelementptr inbounds %struct.eNode, %struct.eNode* %75, i32 0, i32 0
+435$main  store i32 %74, i32* %76, align 8
+436$main  %77 = load i32, i32* %13, align 4
+437$main  %78 = sext i32 %77 to i64
+438$main  %79 = getelementptr inbounds [12 x %struct.eData], [12 x %struct.eData]* %7, i64 0, i64 %78
+439$main  %80 = getelementptr inbounds %struct.eData, %struct.eData* %79, i32 0, i32 2
+440$main  %81 = load i32, i32* %80, align 4
+441$main  %82 = load %struct.eNode*, %struct.eNode** %11, align 8
+442$main  %83 = getelementptr inbounds %struct.eNode, %struct.eNode* %82, i32 0, i32 1
+443$main  store i32 %81, i32* %83, align 4
+444$main  %84 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+445$main  %85 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %84, i32 0, i32 2
+446$main  %86 = load i32, i32* %14, align 4
+447$main  %87 = sext i32 %86 to i64
+448$main  %88 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %85, i64 0, i64 %87
+449$main  %89 = getelementptr inbounds %struct.vNode, %struct.vNode* %88, i32 0, i32 1
+450$main  %90 = load %struct.eNode*, %struct.eNode** %89, align 8
+451$main  %91 = icmp eq %struct.eNode* %90, null
+452$main65  br i1 %91, label %92, label %100
+453$main  %93 = load %struct.eNode*, %struct.eNode** %11, align 8
+454$main  %94 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+455$main  %95 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %94, i32 0, i32 2
+456$main  %96 = load i32, i32* %14, align 4
+457$main  %97 = sext i32 %96 to i64
+458$main  %98 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %95, i64 0, i64 %97
+459$main  %99 = getelementptr inbounds %struct.vNode, %struct.vNode* %98, i32 0, i32 1
+460$main  store %struct.eNode* %93, %struct.eNode** %99, align 8
+461$main67  br label %109
+462$main  %101 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+463$main  %102 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %101, i32 0, i32 2
+464$main  %103 = load i32, i32* %14, align 4
+465$main  %104 = sext i32 %103 to i64
+466$main  %105 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %102, i64 0, i64 %104
+467$main  %106 = getelementptr inbounds %struct.vNode, %struct.vNode* %105, i32 0, i32 1
+468$main  %107 = load %struct.eNode*, %struct.eNode** %106, align 8
+469$main  %108 = load %struct.eNode*, %struct.eNode** %11, align 8
+470$main  call void @link_last(%struct.eNode* %107, %struct.eNode* %108)
+471$main68  br label %109
+472$main  %110 = call noalias i8* @malloc(i64 16) #4
+473$main  %111 = bitcast i8* %110 to %struct.eNode*
+474$main  store %struct.eNode* %111, %struct.eNode** %12, align 8
+475$main  %112 = load i32, i32* %14, align 4
+476$main  %113 = load %struct.eNode*, %struct.eNode** %12, align 8
+477$main  %114 = getelementptr inbounds %struct.eNode, %struct.eNode* %113, i32 0, i32 0
+478$main  store i32 %112, i32* %114, align 8
+479$main  %115 = load i32, i32* %13, align 4
+480$main  %116 = sext i32 %115 to i64
+481$main  %117 = getelementptr inbounds [12 x %struct.eData], [12 x %struct.eData]* %7, i64 0, i64 %116
+482$main  %118 = getelementptr inbounds %struct.eData, %struct.eData* %117, i32 0, i32 2
+483$main  %119 = load i32, i32* %118, align 4
+484$main  %120 = load %struct.eNode*, %struct.eNode** %12, align 8
+485$main  %121 = getelementptr inbounds %struct.eNode, %struct.eNode* %120, i32 0, i32 1
+486$main  store i32 %119, i32* %121, align 4
+487$main  %122 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+488$main  %123 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %122, i32 0, i32 2
+489$main  %124 = load i32, i32* %15, align 4
+490$main  %125 = sext i32 %124 to i64
+491$main  %126 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %123, i64 0, i64 %125
+492$main  %127 = getelementptr inbounds %struct.vNode, %struct.vNode* %126, i32 0, i32 1
+493$main  %128 = load %struct.eNode*, %struct.eNode** %127, align 8
+494$main  %129 = icmp eq %struct.eNode* %128, null
+495$main69  br i1 %129, label %130, label %138
+496$main  %131 = load %struct.eNode*, %struct.eNode** %12, align 8
+497$main  %132 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+498$main  %133 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %132, i32 0, i32 2
+499$main  %134 = load i32, i32* %15, align 4
+500$main  %135 = sext i32 %134 to i64
+501$main  %136 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %133, i64 0, i64 %135
+502$main  %137 = getelementptr inbounds %struct.vNode, %struct.vNode* %136, i32 0, i32 1
+503$main  store %struct.eNode* %131, %struct.eNode** %137, align 8
+504$main70  br label %147
+505$main  %139 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+506$main  %140 = getelementptr inbounds %struct.lGraph, %struct.lGraph* %139, i32 0, i32 2
+507$main  %141 = load i32, i32* %15, align 4
+508$main  %142 = sext i32 %141 to i64
+509$main  %143 = getelementptr inbounds [20 x %struct.vNode], [20 x %struct.vNode]* %140, i64 0, i64 %142
+510$main  %144 = getelementptr inbounds %struct.vNode, %struct.vNode* %143, i32 0, i32 1
+511$main  %145 = load %struct.eNode*, %struct.eNode** %144, align 8
+512$main  %146 = load %struct.eNode*, %struct.eNode** %12, align 8
+513$main  call void @link_last(%struct.eNode* %145, %struct.eNode* %146)
+514$main71  br label %147
+515$main72  br label %148
+516$main  %149 = load i32, i32* %13, align 4
+517$main  %150 = add nsw i32 %149, 1
+518$main  store i32 %150, i32* %13, align 4
+519$main73  br label %53
+520$main  %152 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+521$main  call void @Dijkstra(%struct.lGraph* %152, i32 3)
+522$main  %153 = load %struct.lGraph*, %struct.lGraph** %10, align 8
+523$main  call void @TraverseGraph(%struct.lGraph* %153)
+524$main  ret i32 0

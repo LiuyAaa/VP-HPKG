@@ -1,0 +1,144 @@
+0$main  %3 = alloca i32, align 4
+1$main  %4 = alloca i32, align 4
+2$main  %5 = alloca i8**, align 8
+3$main  %6 = alloca i32, align 4
+4$main  %7 = alloca [100 x i32], align 16
+5$main  store i32 0, i32* %3, align 4
+6$main  store i32 %0, i32* %4, align 4
+7$main  store i8** %1, i8*** %5, align 8
+8$main  store i32 10, i32* %6, align 4
+9$main  %8 = bitcast [100 x i32]* %7 to i8*
+10$main  call void @llvm.memcpy.p0i8.p0i8.i64(i8* %8, i8* bitcast ([100 x i32]* @main.num to i8*), i64 400, i32 16, i1 false)
+11$main  %9 = getelementptr inbounds [100 x i32], [100 x i32]* %7, i32 0, i32 0
+12$main  %10 = load i32, i32* %6, align 4
+13$main  %11 = call i32 @heapSort(i32* %9, i32 %10)
+14$main  %12 = getelementptr inbounds [100 x i32], [100 x i32]* %7, i32 0, i32 0
+15$main  %13 = call i32 @printString(i32* %12)
+16$main  ret i32 0
+17$heapSort  %3 = alloca i32*, align 8
+18$heapSort  %4 = alloca i32, align 4
+19$heapSort  store i32* %0, i32** %3, align 8
+20$heapSort  store i32 %1, i32* %4, align 4
+21$heapSort  %5 = load i32, i32* %4, align 4
+22$heapSort  %6 = sub nsw i32 %5, 1
+23$heapSort  store i32 %6, i32* %4, align 4
+24$heapSort  %7 = load i32*, i32** %3, align 8
+25$heapSort  %8 = load i32, i32* %4, align 4
+26$heapSort  %9 = call i32 @buildHeap(i32* %7, i32 %8)
+27$heapSort1  br label %10
+28$heapSort  %11 = load i32, i32* %4, align 4
+29$heapSort  %12 = icmp sgt i32 %11, 0
+30$heapSort2  br i1 %12, label %13, label %25
+31$heapSort  %14 = load i32*, i32** %3, align 8
+32$heapSort  %15 = getelementptr inbounds i32, i32* %14, i64 0
+33$heapSort  %16 = load i32*, i32** %3, align 8
+34$heapSort  %17 = load i32, i32* %4, align 4
+35$heapSort  %18 = sext i32 %17 to i64
+36$heapSort  %19 = getelementptr inbounds i32, i32* %16, i64 %18
+37$heapSort  %20 = call i32 @swap(i32* %15, i32* %19)
+38$heapSort  %21 = load i32*, i32** %3, align 8
+39$heapSort  %22 = load i32, i32* %4, align 4
+40$heapSort  %23 = add nsw i32 %22, -1
+41$heapSort  store i32 %23, i32* %4, align 4
+42$heapSort  %24 = call i32 @buildHeap(i32* %21, i32 %23)
+43$heapSort3  br label %10
+44$heapSort  ret i32 0
+45$printString  %2 = alloca i32*, align 8
+46$printString  %3 = alloca i32, align 4
+47$printString  store i32* %0, i32** %2, align 8
+48$printString  store i32 0, i32* %3, align 4
+49$printString5  br label %4
+50$printString  %5 = load i32, i32* %3, align 4
+51$printString  %6 = icmp slt i32 %5, 10
+52$printString6  br i1 %6, label %7, label %17
+53$printString  %8 = load i32*, i32** %2, align 8
+54$printString  %9 = load i32, i32* %3, align 4
+55$printString  %10 = sext i32 %9 to i64
+56$printString  %11 = getelementptr inbounds i32, i32* %8, i64 %10
+57$printString  %12 = load i32, i32* %11, align 4
+58$printString  %13 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str, i32 0, i32 0), i32 %12)
+59$printString7  br label %14
+60$printString  %15 = load i32, i32* %3, align 4
+61$printString  %16 = add nsw i32 %15, 1
+62$printString  store i32 %16, i32* %3, align 4
+63$printString9  br label %4
+64$printString  %18 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.1, i32 0, i32 0))
+65$printString  ret i32 0
+66$swim  %3 = alloca i32*, align 8
+67$swim  %4 = alloca i32, align 4
+68$swim  %5 = alloca i32, align 4
+69$swim  store i32* %0, i32** %3, align 8
+70$swim  store i32 %1, i32* %4, align 4
+71$swim10  br label %6
+72$swim  %7 = load i32, i32* %4, align 4
+73$swim  %8 = icmp sgt i32 %7, 0
+74$swim11  br i1 %8, label %9, label %37
+75$swim  %10 = load i32, i32* %4, align 4
+76$swim  %11 = add nsw i32 %10, 1
+77$swim  %12 = sdiv i32 %11, 2
+78$swim  %13 = sub nsw i32 %12, 1
+79$swim  store i32 %13, i32* %5, align 4
+80$swim  %14 = load i32*, i32** %3, align 8
+81$swim  %15 = load i32, i32* %4, align 4
+82$swim  %16 = sext i32 %15 to i64
+83$swim  %17 = getelementptr inbounds i32, i32* %14, i64 %16
+84$swim  %18 = load i32, i32* %17, align 4
+85$swim  %19 = load i32*, i32** %3, align 8
+86$swim  %20 = load i32, i32* %5, align 4
+87$swim  %21 = sext i32 %20 to i64
+88$swim  %22 = getelementptr inbounds i32, i32* %19, i64 %21
+89$swim  %23 = load i32, i32* %22, align 4
+90$swim  %24 = icmp slt i32 %18, %23
+91$swim12  br i1 %24, label %25, label %35
+92$swim  %26 = load i32*, i32** %3, align 8
+93$swim  %27 = load i32, i32* %4, align 4
+94$swim  %28 = sext i32 %27 to i64
+95$swim  %29 = getelementptr inbounds i32, i32* %26, i64 %28
+96$swim  %30 = load i32*, i32** %3, align 8
+97$swim  %31 = load i32, i32* %5, align 4
+98$swim  %32 = sext i32 %31 to i64
+99$swim  %33 = getelementptr inbounds i32, i32* %30, i64 %32
+100$swim  %34 = call i32 @swap(i32* %29, i32* %33)
+101$swim14  br label %35
+102$swim  %36 = load i32, i32* %5, align 4
+103$swim  store i32 %36, i32* %4, align 4
+104$swim15  br label %6
+105$swim  ret i32 0
+106$swap  %3 = alloca i32*, align 8
+107$swap  %4 = alloca i32*, align 8
+108$swap  %5 = alloca i32, align 4
+109$swap  store i32* %0, i32** %3, align 8
+110$swap  store i32* %1, i32** %4, align 8
+111$swap  %6 = load i32*, i32** %4, align 8
+112$swap  %7 = load i32, i32* %6, align 4
+113$swap  store i32 %7, i32* %5, align 4
+114$swap  %8 = load i32*, i32** %3, align 8
+115$swap  %9 = load i32, i32* %8, align 4
+116$swap  %10 = load i32*, i32** %4, align 8
+117$swap  store i32 %9, i32* %10, align 4
+118$swap  %11 = load i32, i32* %5, align 4
+119$swap  %12 = load i32*, i32** %3, align 8
+120$swap  store i32 %11, i32* %12, align 4
+121$swap  ret i32 0
+122$buildHeap  %3 = alloca i32*, align 8
+123$buildHeap  %4 = alloca i32, align 4
+124$buildHeap  %5 = alloca i32, align 4
+125$buildHeap  store i32* %0, i32** %3, align 8
+126$buildHeap  store i32 %1, i32* %4, align 4
+127$buildHeap  %6 = load i32, i32* %4, align 4
+128$buildHeap  store i32 %6, i32* %5, align 4
+129$buildHeap17  br label %7
+130$buildHeap  %8 = load i32, i32* %5, align 4
+131$buildHeap  %9 = load i32, i32* %4, align 4
+132$buildHeap  %10 = sdiv i32 %9, 2
+133$buildHeap  %11 = icmp sge i32 %8, %10
+134$buildHeap18  br i1 %11, label %12, label %19
+135$buildHeap  %13 = load i32*, i32** %3, align 8
+136$buildHeap  %14 = load i32, i32* %5, align 4
+137$buildHeap  %15 = call i32 @swim(i32* %13, i32 %14)
+138$buildHeap19  br label %16
+139$buildHeap  %17 = load i32, i32* %5, align 4
+140$buildHeap  %18 = add nsw i32 %17, -1
+141$buildHeap  store i32 %18, i32* %5, align 4
+142$buildHeap21  br label %7
+143$buildHeap  ret i32 0

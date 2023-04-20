@@ -1,0 +1,95 @@
+0$isEmpty  %1 = alloca i32, align 4
+1$isEmpty  %2 = load i32, i32* @top, align 4
+2$isEmpty  %3 = icmp eq i32 %2, -1
+3$isEmpty0  br i1 %3, label %4, label %5
+4$isEmpty  store i32 1, i32* %1, align 4
+5$isEmpty1  br label %6
+6$isEmpty  store i32 0, i32* %1, align 4
+7$isEmpty2  br label %6
+8$isEmpty  %7 = load i32, i32* %1, align 4
+9$isEmpty  ret i32 %7
+10$isFull  %1 = alloca i32, align 4
+11$isFull  %2 = load i32, i32* @top, align 4
+12$isFull  %3 = load i32, i32* @MAXSIZE, align 4
+13$isFull  %4 = icmp eq i32 %2, %3
+14$isFull4  br i1 %4, label %5, label %6
+15$isFull  store i32 1, i32* %1, align 4
+16$isFull5  br label %7
+17$isFull  store i32 0, i32* %1, align 4
+18$isFull6  br label %7
+19$isFull  %8 = load i32, i32* %1, align 4
+20$isFull  ret i32 %8
+21$peek  %1 = load i32, i32* @top, align 4
+22$peek  %2 = sext i32 %1 to i64
+23$peek  %3 = getelementptr inbounds [10 x i32], [10 x i32]* @stack, i64 0, i64 %2
+24$peek  %4 = load i32, i32* %3, align 4
+25$peek  ret i32 %4
+26$pop  %1 = alloca i32, align 4
+27$pop  %2 = alloca i32, align 4
+28$pop  %3 = call i32 @isEmpty()
+29$pop  %4 = icmp ne i32 %3, 0
+30$pop9  br i1 %4, label %13, label %5
+31$pop  %6 = load i32, i32* @top, align 4
+32$pop  %7 = sext i32 %6 to i64
+33$pop  %8 = getelementptr inbounds [10 x i32], [10 x i32]* @stack, i64 0, i64 %7
+34$pop  %9 = load i32, i32* %8, align 4
+35$pop  store i32 %9, i32* %2, align 4
+36$pop  %10 = load i32, i32* @top, align 4
+37$pop  %11 = sub nsw i32 %10, 1
+38$pop  store i32 %11, i32* @top, align 4
+39$pop  %12 = load i32, i32* %2, align 4
+40$pop  store i32 %12, i32* %1, align 4
+41$pop11  br label %15
+42$pop  %14 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([42 x i8], [42 x i8]* @.str, i32 0, i32 0))
+43$pop10  br label %15
+44$pop  %16 = load i32, i32* %1, align 4
+45$pop  ret i32 %16
+46$push  %2 = alloca i32, align 4
+47$push  %3 = alloca i32, align 4
+48$push  store i32 %0, i32* %3, align 4
+49$push  %4 = call i32 @isFull()
+50$push  %5 = icmp ne i32 %4, 0
+51$push13  br i1 %5, label %13, label %6
+52$push  %7 = load i32, i32* @top, align 4
+53$push  %8 = add nsw i32 %7, 1
+54$push  store i32 %8, i32* @top, align 4
+55$push  %9 = load i32, i32* %3, align 4
+56$push  %10 = load i32, i32* @top, align 4
+57$push  %11 = sext i32 %10 to i64
+58$push  %12 = getelementptr inbounds [10 x i32], [10 x i32]* @stack, i64 0, i64 %11
+59$push  store i32 %9, i32* %12, align 4
+60$push15  br label %15
+61$push  %14 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([39 x i8], [39 x i8]* @.str.1, i32 0, i32 0))
+62$push14  br label %15
+63$push  %16 = load i32, i32* %2, align 4
+64$push  ret i32 %16
+65$main  %1 = alloca i32, align 4
+66$main  %2 = alloca i32, align 4
+67$main  store i32 0, i32* %1, align 4
+68$main  %3 = call i32 @push(i32 1)
+69$main  %4 = call i32 @push(i32 2)
+70$main  %5 = call i32 @push(i32 4)
+71$main  %6 = call i32 @push(i32 6)
+72$main  %7 = call i32 @push(i32 4)
+73$main  %8 = call i32 @push(i32 6)
+74$main  %9 = call i32 @peek()
+75$main  %10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([32 x i8], [32 x i8]* @.str.2, i32 0, i32 0), i32 %9)
+76$main17  br label %11
+77$main  %12 = call i32 @isEmpty()
+78$main  %13 = icmp ne i32 %12, 0
+79$main  %14 = xor i1 %13, true
+80$main18  br i1 %14, label %15, label %19
+81$main  %16 = call i32 @pop()
+82$main  store i32 %16, i32* %2, align 4
+83$main  %17 = load i32, i32* %2, align 4
+84$main  %18 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.3, i32 0, i32 0), i32 %17)
+85$main19  br label %11
+86$main  %20 = call i32 @isFull()
+87$main  %21 = icmp ne i32 %20, 0
+88$main  %22 = select i1 %21, i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.5, i32 0, i32 0), i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.6, i32 0, i32 0)
+89$main  %23 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.4, i32 0, i32 0), i8* %22)
+90$main  %24 = call i32 @isEmpty()
+91$main  %25 = icmp ne i32 %24, 0
+92$main  %26 = select i1 %25, i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.5, i32 0, i32 0), i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.6, i32 0, i32 0)
+93$main  %27 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str.7, i32 0, i32 0), i8* %26)
+94$main  ret i32 0
